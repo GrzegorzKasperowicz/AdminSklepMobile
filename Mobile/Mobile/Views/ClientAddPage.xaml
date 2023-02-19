@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Views.ClientAddPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="NewClient"
+             >
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="3" Padding="15">
+                <Label Text="Id" FontSize="Medium"/>
+                <Entry Text="{Binding Id, Mode=TwoWay}" FontSize="Medium"/>
+                <Label Text="Imie" FontSize="Medium"/>
+                <Entry Text="{Binding FirstName, Mode=TwoWay}" FontSize="Medium"/>
+                <Label Text= "Nazwisko" FontSize="Medium"/>
+                <Editor Text="{Binding LastName, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text= "Ulica" FontSize="Medium"/>
+                <Editor Text="{Binding Street, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text= "Numer Domu" FontSize="Medium"/>
+                <Editor Text="{Binding HouseNumber, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text= "Numer Mieszkania" FontSize="Medium"/>
+                <Editor Text="{Binding ApartmentNumber, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text= "Miasto" FontSize="Medium"/>
+                <Editor Text="{Binding City, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text= "Kod Pocztowy" FontSize="Medium"/>
+                <Editor Text="{Binding PostalCode, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text= "Wojewodztwo" FontSize="Medium"/>
+                <Editor Text="{Binding Province, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text= "Panstwo" FontSize="Medium"/>
+                <Editor Text="{Binding Country, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text= "Numer Telefonu" FontSize="Medium"/>
+                <Editor Text="{Binding PhoneNumber, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text= "Emial" FontSize="Medium"/>
+                <Editor Text="{Binding Email, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <StackLayout>
+                    <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"/>
+                    <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

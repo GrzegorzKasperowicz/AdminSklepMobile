@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Views.AboutPage"
+             xmlns:vm="clr-namespace:Mobile.ViewModels"
+             Title="{Binding Title}">
+    
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="DarkOrange" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout Padding="0,30,0,30" VerticalOptions="FillAndExpand">
+                    <Label Text="Obsługa Sklepu Internetowego" FontSize="Medium" Style="{StaticResource LabelStandard}"/>
+                    <Label Text="Wykonane w:" Style="{StaticResource LabelStandard}" FontSize="Small"/>
+                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="30" />
+                    <Label Text="Grjegosz Kasperowicz" Style="{StaticResource LabelStandard}" FontSize="Small"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <Label></Label>
+                <Image Source="settings.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                <Label Text="Witaj! W strefie zarządzania treścią sklepu Internetowego" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" />
+                <Label></Label>
+                <Image Source="home.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                <Label LineBreakMode="WordWrap" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="16" Text="Sklep zoologiczny online to przede wszystkim ogrmna wygoda zakupów, połączona z pewnącią wzgledem klasy dostępnych artykułów. " />
+                <Label></Label>
+                <Image Source="home.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                <Label  FontSize="16"  LineBreakMode="WordWrap" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" Text="W asortymencie sklepu zoologicznego online znajdziesz najrozmaitsze produkty z kategorii karma dla psa i karma dla kota. Bez względu na to, jak duży jest Twój wierny przyjaciel i ile waży, bez najmniejszego problemu będziesz w stanie skompletować mu zbilansowany posiłek w konkurencyjnej cenie. W Sklepie Zoologicznym codziennie pracujemy nad poszerzaniem oferty produktów dla zwierząt o najbardziej potrzebne i praktyczne akcesoria dla psa i żwirki i akcesoria dla kota."/>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

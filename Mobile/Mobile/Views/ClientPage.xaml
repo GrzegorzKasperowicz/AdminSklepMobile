@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Views.ClientPage"
+             xmlns:local="clr-namespace:Mobile.ViewModels"
+             xmlns:model="clr-namespace:Mobile.Models"
+             x:Name="BrowseClients">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Dodaj" Command="{Binding AddItemCommand}" />
+    </ContentPage.ToolbarItems>
+    <RefreshView x:DataType="local:ClientViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Items}"
+                SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" x:DataType="model:ClientForView">
+                        <ScrollView>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="Id"/>
+                            <Label Grid.Column="0" Grid.Row="1" Text="Imię"/>
+                            <Label Grid.Column="0" Grid.Row="2" Text="Nazwisko"/>
+                            <Label Grid.Column="0" Grid.Row="3" Text="Ulica"/>
+                            <Label Grid.Column="0" Grid.Row="4" Text="Numer Domu"/>
+                            <Label Grid.Column="0" Grid.Row="5" Text="Numer Mieszkania"/>
+                            <Label Grid.Column="0" Grid.Row="6" Text="Miasto"/>
+                            <Label Grid.Column="0" Grid.Row="7" Text="Województwo"/>
+                            <Label Grid.Column="0" Grid.Row="8" Text="Kod Pocztowy"/>
+                            <Label Grid.Column="0" Grid.Row="9" Text="Kraj"/>
+                            <Label Grid.Column="0" Grid.Row="10" Text="Numer Telefonu"/>
+                            <Label Grid.Column="0" Grid.Row="11" Text="Emial"/>
+
+                            <Label Grid.Column="1"
+                            Grid.Row="0"
+                            Text="{Binding IdClient}" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" 
+                            HorizontalOptions="Center"/>
+                            
+                            <Label Grid.Column="1"
+                            Grid.Row="1"    
+                            Text="{Binding FirstName}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" 
+                            HorizontalOptions="Center"/>
+                            
+                            <Label Grid.Column="1"
+                            Grid.Row="2"       
+                            Text="{Binding LastName}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" 
+                            HorizontalOptions="Center"/>
+                            
+                            <Label Grid.Column="1"
+                            Grid.Row="3"
+                            Text="{Binding Street}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13"
+                            HorizontalOptions="Center"/>
+                            
+                            <Label Grid.Column="1"
+                            Grid.Row="4"
+                            Text="{Binding HouseNumber}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" 
+                            HorizontalOptions="Center"/>
+                            
+                            <Label Grid.Column="1"
+                            Grid.Row="5"
+                            Text="{Binding ApartmentNumber}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" 
+                            HorizontalOptions="Center"/>
+                            
+                            <Label Grid.Column="1"
+                            Grid.Row="6"
+                            Text="{Binding City}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13"
+                            HorizontalOptions="Center"/>
+                            
+                            <Label Grid.Column="1"
+                            Grid.Row="7"
+                            Text="{Binding Province}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" 
+                            HorizontalOptions="Center"/>
+                            
+                            <Label Grid.Column="1"
+                            Grid.Row="8"
+                            Text="{Binding PostalCode}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" 
+                            HorizontalOptions="Center"/>
+                            
+                            <Label Grid.Column="1"
+                            Grid.Row="9"
+                            Text="{Binding Country}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" 
+                            HorizontalOptions="Center"/>
+                            
+                            <Label Grid.Column="1"
+                            Grid.Row="10"
+                            Text="{Binding PhoneNumber}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13"
+                            HorizontalOptions="Center"/>
+                            
+                            <Label Grid.Column="1"
+                            Grid.Row="11"
+                            Text="{Binding Email}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13"
+                            HorizontalOptions="Center"/>
+                            
+                            <Button Grid.Column="1" Grid.Row="12" Text="Usuń" BackgroundColor="DarkOrange" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClientViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding .}"/>
+                        </Grid>
+                        </ScrollView>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ClientViewModel}}, Path=ItemTapped}"		
+                                CommandParameter="{Binding .}">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

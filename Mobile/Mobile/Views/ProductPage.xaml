@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Views.ProductPage"
+             xmlns:local="clr-namespace:Mobile.ViewModels"
+             xmlns:model="clr-namespace:AdminServiceConnection" 
+             x:Name="BrowseProducts"
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Dodaj" Command="{Binding AddItemCommand}" />
+    </ContentPage.ToolbarItems>
+    <RefreshView x:DataType="local:ProductViewModel" 
+                 Command="{Binding LoadItemsCommand}" 
+                 IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Items}"
+                SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" x:DataType="model:ProductForView">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Text="Id"/>
+                            <Label Grid.Column="0" Grid.Row="1" Text="Kod"/>
+                            <Label Grid.Column="0" Grid.Row="2" Text="Nazwa"/>
+                            <Label Grid.Column="0" Grid.Row="3" Text="Cena"/>
+                            <Label Grid.Column="0" Grid.Row="4" Text="Opis"/>
+                            <Label Grid.Column="0" Grid.Row="5" Text="Kategoria Produktu"/>
+                            <Label Grid.Column="0" Grid.Row="6" Text="Typ Produktu"/>
+                            <Label Grid.Column="0" Grid.Row="7" Text="Producent"/>
+
+                        <Label Grid.Column="1"
+                            Grid.Row="0"
+                            Text="{Binding IdProduct}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" 
+                            HorizontalOptions="Center"/>
+                            
+                        <Label Grid.Column="1"
+                            Grid.Row="1"
+                            Text="{Binding Code}" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" 
+                            HorizontalOptions="Center"/>
+                            
+                        <Label Grid.Column="1"
+                            Grid.Row="2"
+                            Text="{Binding Title}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" 
+                            HorizontalOptions="Center"/>
+                            
+                        <Label Grid.Column="1"
+                            Grid.Row="3"
+                            Text="{Binding Price}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" 
+                            HorizontalOptions="Center"/>
+                            
+                        <Label Grid.Column="1"
+                            Grid.Row="4"
+                            Text="{Binding Description}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" 
+                            HorizontalOptions="Center"/>
+                            
+                        <Label Grid.Column="1"
+                            Grid.Row="5"
+                            Text="{Binding ProductCategoryTitle}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" 
+                            HorizontalOptions="Center"/>
+                            
+                        <Label Grid.Column="1"
+                            Grid.Row="6"
+                            Text="{Binding ProductTypeTitle}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" 
+                            HorizontalOptions="Center"/>
+                            
+                        <Label Grid.Column="1"
+                            Grid.Row="7"
+                            Text="{Binding ProductProducerTitle}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" 
+                            HorizontalOptions="Center"/>
+                        <Button Grid.Column="1" Grid.Row="8" Text="Usuń" BackgroundColor="DarkOrange" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProductViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding .}"/>
+                        </Grid>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProductViewModel}}, Path=ItemTapped}"		
+                                CommandParameter="{Binding .}">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>
